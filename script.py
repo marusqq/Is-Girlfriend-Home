@@ -97,14 +97,14 @@ def check_if_gf_home(ip_pc, ip_phone, subnet):
     else:
         check = False
 
-    return check
+    return check, checks
 
 gf_pc, gf_phone, subnet, gf_home, passw = setup()
 
 #main loop
 while True:
     
-    check = check_if_gf_home(gf_pc, gf_phone, subnet)
+    check, checks = check_if_gf_home(gf_pc, gf_phone, subnet)
 
     now = datetime.now()
 
@@ -116,12 +116,12 @@ while True:
         #home -> not home
         if gf_home and not check:
             print(now, '- GF just left home')
-            send_email(text = 'GF has left home', password = passw)
+            send_email(text = 'GF has left home. \n Tests:\t' + str(checks), password = passw)
         
         #not home -> home
         else:
             print(now, '- GF just came back home')
-            send_email(text = 'GF back home', password = passw)
+            send_email(text = 'GF back home \n Tests:\t' + str(checks), password = passw)
 
         gf_home = check
     
