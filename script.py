@@ -76,7 +76,7 @@ def is_gf_home(ip_pc, ip_phone, subnet):
 def check_if_gf_home(ip_pc, ip_phone, subnet):
     
     checks = []
-    #check 10 times, each time waiting for 5 secs, to get the right result
+    #check 11 times, each time waiting for 5 secs, to get the right result
     for i in range(0,10):
         test = is_gf_home(gf_pc, gf_phone, subnet)
         print('test', i, test, end = '\t')
